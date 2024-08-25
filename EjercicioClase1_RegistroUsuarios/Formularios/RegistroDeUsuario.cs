@@ -33,12 +33,22 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 
             try
             {
-                if (textBoxNombre.Text == "" || textBoxApellido.Text == "" || textBoxEmail.Text == "" || intEdad.Value == 0 || checkBoxTelefono.Checked && textBoxTelefono.Text == "")
-                    throw new Exception("Completar todos los campos");
-                
+                /*if (textBoxNombre.Text == "" || textBoxApellido.Text == "" || textBoxEmail.Text == "" || intEdad.Value == 0 || checkBoxTelefono.Checked && textBoxTelefono.Text == "")
+                throw new Exception("Completar todos los campos");
+                */
+
+                if (textBoxNombre.Text == "")
+                    throw new Exception("Completar Nombre");
+                if (textBoxApellido.Text == "")
+                    throw new Exception("Completar Apellido");
+                if (textBoxEmail.Text == "")
+                    throw new Exception("Completar Email");
+                if (intEdad.Value == 0)
+                    throw new Exception("Completar la edad");
+                if (checkBoxTelefono.Checked && textBoxTelefono.Text == "")
+                    throw new Exception("Completar el numero de telefono");
                 if (comboBoxRol.Text == "")
                     throw new Exception("Elegir un Rol");
-
 
                 usuario.Nombre = textBoxNombre.Text;
                 usuario.Apellido = textBoxApellido.Text;

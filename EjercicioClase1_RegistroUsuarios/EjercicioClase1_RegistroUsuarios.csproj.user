@@ -4,6 +4,15 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\AltaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\FormularioInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\ObtenerDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\RegistroDeUsuario.cs">
       <SubType>Form</SubType>
     </Compile>

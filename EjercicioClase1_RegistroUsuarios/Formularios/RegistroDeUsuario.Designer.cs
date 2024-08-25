@@ -211,7 +211,7 @@
             Controls.Add(labelNombre);
             Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "RegistroDeUsuario";
-            Text = "Alta de Usuario";
+            Text = "Registro Usuario";
             ((System.ComponentModel.ISupportInitialize)intEdad).EndInit();
             ResumeLayout(false);
             PerformLayout();

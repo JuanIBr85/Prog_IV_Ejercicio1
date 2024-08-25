@@ -31,25 +31,25 @@
             btnGuardarUsuario = new Button();
             labelRol = new Label();
             comboBoxRol = new ComboBox();
-            checkBoxTelefono = new CheckBox();
+            checkBoxTelUsuario = new CheckBox();
             dateTimePickerFechaNacimiento = new DateTimePicker();
             intEdad = new NumericUpDown();
             labelFechaNacimiento = new Label();
             labelEdad = new Label();
-            textBoxTelefono = new TextBox();
-            labelTelefono = new Label();
             textBoxEmail = new TextBox();
             labelEmail = new Label();
             textBoxApellido = new TextBox();
             labelApellido = new Label();
             textBoxNombre = new TextBox();
             labelNombre = new Label();
+            labelTelefono = new Label();
+            textBox1Telefono = new TextBox();
             ((System.ComponentModel.ISupportInitialize)intEdad).BeginInit();
             SuspendLayout();
             // 
             // btnGuardarUsuario
             // 
-            btnGuardarUsuario.Location = new Point(408, 371);
+            btnGuardarUsuario.Location = new Point(350, 367);
             btnGuardarUsuario.Name = "btnGuardarUsuario";
             btnGuardarUsuario.Size = new Size(158, 42);
             btnGuardarUsuario.TabIndex = 31;
@@ -74,15 +74,15 @@
             comboBoxRol.Size = new Size(214, 28);
             comboBoxRol.TabIndex = 29;
             // 
-            // checkBoxTelefono
+            // checkBoxTelUsuario
             // 
-            checkBoxTelefono.AutoSize = true;
-            checkBoxTelefono.Location = new Point(21, 276);
-            checkBoxTelefono.Name = "checkBoxTelefono";
-            checkBoxTelefono.Size = new Size(103, 24);
-            checkBoxTelefono.TabIndex = 28;
-            checkBoxTelefono.Text = "¿Telefono?";
-            checkBoxTelefono.UseVisualStyleBackColor = true;
+            checkBoxTelUsuario.AutoSize = true;
+            checkBoxTelUsuario.Location = new Point(21, 276);
+            checkBoxTelUsuario.Name = "checkBoxTelUsuario";
+            checkBoxTelUsuario.Size = new Size(103, 24);
+            checkBoxTelUsuario.TabIndex = 28;
+            checkBoxTelUsuario.Text = "¿Telefono?";
+            checkBoxTelUsuario.UseVisualStyleBackColor = true;
             // 
             // dateTimePickerFechaNacimiento
             // 
@@ -117,26 +117,6 @@
             labelEdad.Size = new Size(43, 20);
             labelEdad.TabIndex = 24;
             labelEdad.Text = "Edad";
-            // 
-            // textBoxTelefono
-            // 
-            textBoxTelefono.Enabled = false;
-            textBoxTelefono.Location = new Point(191, 302);
-            textBoxTelefono.Name = "textBoxTelefono";
-            textBoxTelefono.Size = new Size(214, 27);
-            textBoxTelefono.TabIndex = 23;
-            textBoxTelefono.Visible = false;
-            // 
-            // labelTelefono
-            // 
-            labelTelefono.AutoSize = true;
-            labelTelefono.Enabled = false;
-            labelTelefono.Location = new Point(21, 308);
-            labelTelefono.Name = "labelTelefono";
-            labelTelefono.Size = new Size(146, 20);
-            labelTelefono.TabIndex = 22;
-            labelTelefono.Text = "Numero de Telefono";
-            labelTelefono.Visible = false;
             // 
             // textBoxEmail
             // 
@@ -186,21 +166,37 @@
             labelNombre.TabIndex = 16;
             labelNombre.Text = "Nombre";
             // 
+            // labelTelefono
+            // 
+            labelTelefono.AutoSize = true;
+            labelTelefono.Location = new Point(21, 319);
+            labelTelefono.Name = "labelTelefono";
+            labelTelefono.Size = new Size(67, 20);
+            labelTelefono.TabIndex = 32;
+            labelTelefono.Text = "Telefono";
+            // 
+            // textBox1Telefono
+            // 
+            textBox1Telefono.Location = new Point(205, 316);
+            textBox1Telefono.Name = "textBox1Telefono";
+            textBox1Telefono.Size = new Size(152, 27);
+            textBox1Telefono.TabIndex = 33;
+            // 
             // AltaUsuario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(578, 450);
+            ClientSize = new Size(520, 450);
+            Controls.Add(textBox1Telefono);
+            Controls.Add(labelTelefono);
             Controls.Add(btnGuardarUsuario);
             Controls.Add(labelRol);
             Controls.Add(comboBoxRol);
-            Controls.Add(checkBoxTelefono);
+            Controls.Add(checkBoxTelUsuario);
             Controls.Add(dateTimePickerFechaNacimiento);
             Controls.Add(intEdad);
             Controls.Add(labelFechaNacimiento);
             Controls.Add(labelEdad);
-            Controls.Add(textBoxTelefono);
-            Controls.Add(labelTelefono);
             Controls.Add(textBoxEmail);
             Controls.Add(labelEmail);
             Controls.Add(textBoxApellido);
@@ -208,7 +204,7 @@
             Controls.Add(textBoxNombre);
             Controls.Add(labelNombre);
             Name = "AltaUsuario";
-            Text = "AltaUsuario";
+            Text = "Alta Usuario";
             ((System.ComponentModel.ISupportInitialize)intEdad).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -219,18 +215,18 @@
         private Button btnGuardarUsuario;
         private Label labelRol;
         private ComboBox comboBoxRol;
-        private CheckBox checkBoxTelefono;
+        private CheckBox checkBoxTelUsuario;
         private DateTimePicker dateTimePickerFechaNacimiento;
         private NumericUpDown intEdad;
         private Label labelFechaNacimiento;
         private Label labelEdad;
-        private TextBox textBoxTelefono;
-        private Label labelTelefono;
         private TextBox textBoxEmail;
         private Label labelEmail;
         private TextBox textBoxApellido;
         private Label labelApellido;
         private TextBox textBoxNombre;
         private Label labelNombre;
+        private Label labelTelefono;
+        private TextBox textBox1Telefono;
     }
 }

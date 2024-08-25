@@ -140,6 +140,46 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
             return usuario;
         }
 
+        public bool AltaUsuario(Usuario usuario)
+        {
+            ConexionBD conexionBD = new ConexionBD();
+            string conexion = conexionBD.conectionString();
 
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("INSERT INTO Usuarios (Nombre,Apellido,Edad,FechaNacimiento,Email,Telefono) ");
+            stringBuilder.Append("VALUES (@Nombre,@Apellido,@Edad,@FechaNacimiento,@Email,@Telefono);");
+
+            string consulta = stringBuilder.ToString();
+
+            bool exitoso = false;
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(conexion))
+                {
+
+                    sqlConnection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand(consulta, sqlConnection))
+                    {   
+                        sqlCommand.Parameters.AddWithValue("@Nombre",usuario.Nombre);
+                        sqlCommand.Parameters.AddWithValue("@Apellido", usuario.Apellido);
+                        sqlCommand.Parameters.AddWithValue("@Edad", usuario.Edad);
+                        sqlCommand.Parameters.AddWithValue("@FechaNacimiento", usuario.FechaNacimiento);
+                        sqlCommand.Parameters.AddWithValue("@Email", usuario.EmailUsuario);
+                        sqlCommand.Parameters.AddWithValue("@Telefono", usuario.Telefono);
+
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+                exitoso = true;
+               
+            }
+            catch (Exception ex)
+            {
+               throw new Exception(ex.Message);
+
+            }
+            return exitoso;
+        }
     }
 }

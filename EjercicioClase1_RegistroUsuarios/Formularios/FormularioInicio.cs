@@ -30,5 +30,11 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 
             altaUsuarioFormulario.Show();
         }
+
+        private void btnModUsuario_Click(object sender, EventArgs e)
+        {
+            ModificarUsuario modificarUsuarioFormulario = new ModificarUsuario();
+            modificarUsuarioFormulario.Show();
+        }
     }
 }

@@ -159,7 +159,7 @@
             Controls.Add(dataGridViewUsuarios);
             Controls.Add(btnObtenerDatos);
             Name = "ObtenerDatos";
-            Text = "ObtenerDatoscs";
+            Text = "Usuarios";
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).EndInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1IdUsuario).EndInit();

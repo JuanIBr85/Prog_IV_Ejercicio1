@@ -21,7 +21,7 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
         public string RolUsuario { get; set; }
 
 
-
+        // Metodo que devuelve al lista de usuarios
         public List<Usuario> ObtenerUsuarios()
         {
             ConexionBD conexionBD = new ConexionBD();
@@ -83,6 +83,7 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
             return usuarios;
         }
 
+        //Metodo que muestra un usuario determinado, a travez de si IdUsuario
         public Usuario ObtenerUsuario(int idUsuario)
         {
             ConexionBD conexionBD = new ConexionBD();
@@ -140,6 +141,7 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
             return usuario;
         }
 
+        //Metodo para dar de alta un nuevo usuario
         public bool AltaUsuario(Usuario usuario)
         {
             ConexionBD conexionBD = new ConexionBD();
@@ -180,6 +182,78 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
 
             }
             return exitoso;
+        }
+
+        //Metodo para modificar alguno de los datos de un usuario existente.
+        public bool ModificarUsuario(int idUsuario, Usuario usuario)
+        {
+            ConexionBD conexionBD = new ConexionBD();
+            string conexion = conexionBD.conectionString();
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.Append("UPDATE Usuarios SET ");
+
+            // Armado de la consulta en la BD en funcion del/ los atributo/s a modificar
+
+            List<string> atributo = new List<string>();
+
+            if(!string.IsNullOrEmpty(usuario.Nombre)) atributo.Add("Nombre = @Nombre");
+            if (!string.IsNullOrEmpty(usuario.Apellido)) atributo.Add("Apellido = @Apellido");
+            if (usuario.Edad > 0) atributo.Add("Edad = @Edad");
+            if (usuario.FechaNacimiento != DateTime.MinValue) atributo.Add("FechaNacimiento = @FechaNacimiento");
+            if (!string.IsNullOrEmpty(usuario.EmailUsuario)) atributo.Add("Email = @Email");
+            if (!string.IsNullOrEmpty(usuario.Telefono)) atributo.Add("Telefono = @Telefono");
+
+            stringBuilder.Append(string.Join(", ", atributo));
+            stringBuilder.Append(" WHERE ID_Usuario = @ID_Usuario");
+
+            string consulta = stringBuilder.ToString();
+
+           Console.WriteLine("El string de conxion es " + consulta);
+
+            bool exito = false;
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(conexion))
+                {
+                    sqlConnection.Open();
+                    using(SqlCommand sqlCommand = new SqlCommand(consulta,sqlConnection)) 
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ID_Usuario", idUsuario);
+
+                        if (!string.IsNullOrEmpty(usuario.Nombre)) sqlCommand.Parameters.AddWithValue("@Nombre",usuario.Nombre);
+                        if (!string.IsNullOrEmpty(usuario.Apellido)) sqlCommand.Parameters.AddWithValue("@Apellido", usuario.Apellido);
+                        if (usuario.Edad > 0) sqlCommand.Parameters.AddWithValue("@Edad", usuario.Edad);
+                        if (!string.IsNullOrEmpty(usuario.EmailUsuario)) sqlCommand.Parameters.AddWithValue("@Email", usuario.EmailUsuario);
+                        if (!string.IsNullOrEmpty(usuario.Telefono)) sqlCommand.Parameters.AddWithValue("@Telefono", usuario.Telefono);
+                        
+                        //DateTime fechaNacimiento = usuario.FechaNacimiento;
+
+                        if (usuario.FechaNacimiento < (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue || usuario.FechaNacimiento > (DateTime)System.Data.SqlTypes.SqlDateTime.MaxValue)
+                        {
+                           
+                            sqlCommand.Parameters.AddWithValue("@FechaNacimiento", DBNull.Value);
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@FechaNacimiento", usuario.FechaNacimiento);
+                        }
+
+
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+                exito = true;
+            }
+            catch (Exception ex) 
+            
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return exito;
         }
     }
 }

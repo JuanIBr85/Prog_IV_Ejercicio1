@@ -83,6 +83,7 @@
             checkBoxTelUsuario.TabIndex = 28;
             checkBoxTelUsuario.Text = "¿Telefono?";
             checkBoxTelUsuario.UseVisualStyleBackColor = true;
+            checkBoxTelUsuario.CheckedChanged += checkBoxTelUsuario_CheckedChanged;
             // 
             // dateTimePickerFechaNacimiento
             // 
@@ -169,18 +170,22 @@
             // labelTelefono
             // 
             labelTelefono.AutoSize = true;
+            labelTelefono.Enabled = false;
             labelTelefono.Location = new Point(21, 319);
             labelTelefono.Name = "labelTelefono";
             labelTelefono.Size = new Size(67, 20);
             labelTelefono.TabIndex = 32;
             labelTelefono.Text = "Telefono";
+            labelTelefono.Visible = false;
             // 
             // textBox1Telefono
             // 
+            textBox1Telefono.Enabled = false;
             textBox1Telefono.Location = new Point(205, 316);
             textBox1Telefono.Name = "textBox1Telefono";
             textBox1Telefono.Size = new Size(152, 27);
             textBox1Telefono.TabIndex = 33;
+            textBox1Telefono.Visible = false;
             // 
             // AltaUsuario
             // 

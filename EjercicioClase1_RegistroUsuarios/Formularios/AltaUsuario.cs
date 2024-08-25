@@ -35,7 +35,7 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
                 if (checkBoxTelUsuario.Checked && textBox1Telefono.Text == "")
                     throw new Exception("Completar el numero de telefono");
                 //if (comboBoxRol.Text == "")
-                  //  throw new Exception("Elegir un Rol");
+                //  throw new Exception("Elegir un Rol");
 
                 Usuario usuarioNuevo = new Usuario()
                 {
@@ -64,7 +64,26 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            
+
+            }
+
+        }
+
+        private void checkBoxTelUsuario_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxTelUsuario.Checked)
+            {
+                labelTelefono.Visible = true;
+                labelTelefono.Enabled = true;
+                textBox1Telefono.Visible=true;
+                textBox1Telefono.Enabled=true;
+            }
+            else
+            {
+                labelTelefono.Visible = false;
+                labelTelefono.Enabled = false;
+                textBox1Telefono.Visible = false;
+                textBox1Telefono.Enabled = false;
             }
 
         }

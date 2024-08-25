@@ -31,6 +31,9 @@
             components = new System.ComponentModel.Container();
             btnObtenerDatos = new Button();
             dataGridViewUsuarios = new DataGridView();
+            usuarioBindingSource = new BindingSource(components);
+            label1IdUsuario = new Label();
+            numericUpDown1IdUsuario = new NumericUpDown();
             IdUsuario = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
@@ -38,9 +41,6 @@
             FechaNacimiemto = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Telefono = new DataGridViewTextBoxColumn();
-            usuarioBindingSource = new BindingSource(components);
-            label1IdUsuario = new Label();
-            numericUpDown1IdUsuario = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsuarios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1IdUsuario).BeginInit();
@@ -65,6 +65,26 @@
             dataGridViewUsuarios.RowHeadersWidth = 51;
             dataGridViewUsuarios.Size = new Size(1053, 400);
             dataGridViewUsuarios.TabIndex = 1;
+            // 
+            // usuarioBindingSource
+            // 
+            usuarioBindingSource.DataSource = typeof(Modelos.Usuario);
+            // 
+            // label1IdUsuario
+            // 
+            label1IdUsuario.AutoSize = true;
+            label1IdUsuario.Location = new Point(33, 30);
+            label1IdUsuario.Name = "label1IdUsuario";
+            label1IdUsuario.Size = new Size(101, 20);
+            label1IdUsuario.TabIndex = 2;
+            label1IdUsuario.Text = "Id del Usuario";
+            // 
+            // numericUpDown1IdUsuario
+            // 
+            numericUpDown1IdUsuario.Location = new Point(140, 28);
+            numericUpDown1IdUsuario.Name = "numericUpDown1IdUsuario";
+            numericUpDown1IdUsuario.Size = new Size(91, 27);
+            numericUpDown1IdUsuario.TabIndex = 3;
             // 
             // IdUsuario
             // 
@@ -104,50 +124,33 @@
             // 
             // FechaNacimiemto
             // 
+            FechaNacimiemto.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FechaNacimiemto.Frozen = true;
             FechaNacimiemto.HeaderText = "Fecha de nacimineto";
             FechaNacimiemto.MinimumWidth = 6;
             FechaNacimiemto.Name = "FechaNacimiemto";
             FechaNacimiemto.ReadOnly = true;
-            FechaNacimiemto.Width = 125;
+            FechaNacimiemto.Width = 160;
             // 
             // Email
             // 
+            Email.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Email.Frozen = true;
             Email.HeaderText = "Email";
             Email.MinimumWidth = 6;
             Email.Name = "Email";
             Email.ReadOnly = true;
-            Email.Width = 125;
+            Email.Width = 75;
             // 
             // Telefono
             // 
+            Telefono.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Telefono.Frozen = true;
             Telefono.HeaderText = "Telefono";
             Telefono.MinimumWidth = 6;
             Telefono.Name = "Telefono";
             Telefono.ReadOnly = true;
-            Telefono.Width = 125;
-            // 
-            // usuarioBindingSource
-            // 
-            usuarioBindingSource.DataSource = typeof(Modelos.Usuario);
-            // 
-            // label1IdUsuario
-            // 
-            label1IdUsuario.AutoSize = true;
-            label1IdUsuario.Location = new Point(33, 30);
-            label1IdUsuario.Name = "label1IdUsuario";
-            label1IdUsuario.Size = new Size(101, 20);
-            label1IdUsuario.TabIndex = 2;
-            label1IdUsuario.Text = "Id del Usuario";
-            // 
-            // numericUpDown1IdUsuario
-            // 
-            numericUpDown1IdUsuario.Location = new Point(140, 28);
-            numericUpDown1IdUsuario.Name = "numericUpDown1IdUsuario";
-            numericUpDown1IdUsuario.Size = new Size(91, 27);
-            numericUpDown1IdUsuario.TabIndex = 3;
+            Telefono.Width = 96;
             // 
             // ObtenerDatos
             // 

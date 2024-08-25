@@ -19,6 +19,7 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
         public DateTime FechaNacimiento { get; set; }
         public decimal Edad { get; set; }
         public string RolUsuario { get; set; }
+        public Boolean Borrado { get; set; }
 
 
         // Metodo que devuelve al lista de usuarios
@@ -28,7 +29,7 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
 
             string conexion = conexionBD.conectionString();
 
-            string consultaBD = "Select ID_Usuario,Nombre, Apellido, Edad, FechaNacimiento, Email, Telefono from Usuarios;";
+            string consultaBD = "Select ID_Usuario,Nombre, Apellido, Edad, FechaNacimiento, Email, Telefono from Usuarios WHERE Borrado = 0;";
 
             List<Usuario> usuarios = new List<Usuario>();
 
@@ -91,7 +92,7 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("SELECT ID_Usuario, Nombre, Apellido, Edad, FechaNacimiento, Email, Telefono FROM Usuarios ");
-            stringBuilder.Append("WHERE ID_Usuario = @ID_Usuario");
+            stringBuilder.Append("WHERE ID_Usuario = @ID_Usuario AND Borrado = 0 ");
 
             string consulta = stringBuilder.ToString();
 
@@ -210,7 +211,7 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
 
             string consulta = stringBuilder.ToString();
 
-           Console.WriteLine("El string de conxion es " + consulta);
+           //Console.WriteLine("El string de conxion es " + consulta);
 
             bool exito = false;
 
@@ -255,5 +256,43 @@ namespace EjercicioClase1_RegistroUsuarios.Modelos
 
             return exito;
         }
+        
+        public bool BorradoUsuarioLogica (int idUsuario, Usuario usuario)
+        {
+            ConexionBD conexionBD = new ConexionBD();
+            string conexion = conexionBD.conectionString();
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("UPDATE Usuarios SET Borrado = @Borrado ");
+            stringBuilder.Append("WHERE ID_Usuario = @ID_Usuario ");
+
+            string consulta = stringBuilder.ToString();
+
+           bool exito = false;
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(conexion))
+                {
+                     sqlConnection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand(consulta,sqlConnection))
+                    {
+                        sqlCommand.Parameters.AddWithValue("@ID_Usuario", idUsuario);
+                        sqlCommand.Parameters.AddWithValue("@Borrado",usuario.Borrado);
+
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+                exito= true;
+            }
+            
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return exito;
+        }
+        
     }
 }

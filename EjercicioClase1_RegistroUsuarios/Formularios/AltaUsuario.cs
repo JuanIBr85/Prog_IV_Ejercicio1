@@ -1,4 +1,5 @@
-﻿using EjercicioClase1_RegistroUsuarios.Modelos;
+﻿using EjercicioClase1_RegistroUsuarios.Interfaces;
+using EjercicioClase1_RegistroUsuarios.Modelos;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -7,16 +8,20 @@ using System.Data;
 using System.Drawing;
 using System.IO.Pipes;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EjercicioClase1_RegistroUsuarios.Formularios
 {
+
     public partial class AltaUsuario : Form
     {
-        public AltaUsuario()
-        {
+        private readonly IUsuario _usuario;
+        public AltaUsuario(IUsuario usuario)
+        {   
+            _usuario = usuario;
             InitializeComponent();
         }
         Usuario usuario = new Usuario();
@@ -44,11 +49,12 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
                     Edad = intEdad.Value,
                     EmailUsuario = textBoxEmail.Text,
                     FechaNacimiento = dateTimePickerFechaNacimiento.Value,
+                    //Edad = edadUsuario(dateTimePickerFechaNacimiento.Value),
                     Telefono = textBox1Telefono.Text,
 
                 };
 
-                bool exito = usuario.AltaUsuario(usuarioNuevo);
+                bool exito = _usuario.AltaUsuario(usuarioNuevo);
 
                 if (exito)
                 {
@@ -86,6 +92,20 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
                 textBox1Telefono.Enabled = false;
             }
 
+          
         }
+
+        /*private int edadUsuario (DateTime fechaNacimiento) 
+        {
+            DateTime fechaActual = DateTime.Now;
+             int edad = fechaActual.Year - fechaNacimiento.Year;
+
+            if (fechaActual < fechaNacimiento.AddYears(edad)) 
+            {
+                edad--;
+            }
+
+            return edad;
+        }*/
     }
 }

@@ -1,4 +1,5 @@
-﻿using EjercicioClase1_RegistroUsuarios.Modelos;
+﻿using EjercicioClase1_RegistroUsuarios.Interfaces;
+using EjercicioClase1_RegistroUsuarios.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +14,10 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 {
     public partial class BajaUsuario : Form
     {
-        public BajaUsuario()
-        {
+        private readonly IUsuario _usuario;
+        public BajaUsuario(IUsuario usuario)
+        {   
+            _usuario = usuario;
             InitializeComponent();
         }
         Usuario usuario = new Usuario();
@@ -25,7 +28,7 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
             if (usuarioPorId > 0)
             {
                 Usuario usuarioID = new Usuario();
-                usuarioID = usuarioID.ObtenerUsuario(usuarioPorId);
+                usuarioID = _usuario.ObtenerUsuario(usuarioPorId);
 
                 dataGridViewBajaIdUsuario.Rows.Clear();
 
@@ -42,21 +45,14 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 
         private void btnBajaUsuario_Click(object sender, EventArgs e)
         {
-                Usuario usuarioBaja = new Usuario();
+            Usuario usuarioBaja = new Usuario();
             try
             {
                 int idUsuarioBaja = Convert.ToInt32(numericUpDownBajaUsuarioId.Value);
+   
+                usuarioBaja.Borrado = true;
 
-                if(idUsuarioBaja == 0) 
-                {
-                    MessageBox.Show("Ingresar un id de usuario valido.");
-                }
-                else
-                {   
-                    usuarioBaja.Borrado = true;
-                }
-
-                bool exito = usuario.BorradoUsuarioLogica(idUsuarioBaja,usuarioBaja);
+                bool exito = _usuario.BorradoUsuarioLogica(idUsuarioBaja, usuarioBaja);
 
                 if (exito)
                 {
@@ -68,11 +64,12 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
                 }
 
             }
-            catch (Exception ex)  
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
- 
+
         }
+
     }
 }

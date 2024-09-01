@@ -1,10 +1,12 @@
-﻿using EjercicioClase1_RegistroUsuarios.Modelos;
+﻿using EjercicioClase1_RegistroUsuarios.Interfaces;
+using EjercicioClase1_RegistroUsuarios.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,8 +15,10 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 {
     public partial class ModificarUsuario : Form
     {
-        public ModificarUsuario()
-        {
+        private readonly IUsuario _usuario;
+        public ModificarUsuario(IUsuario usuario)
+        {   
+            _usuario = usuario;
             InitializeComponent();
         }
         Usuario usuario = new Usuario();
@@ -28,7 +32,7 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 
                 if (idUsuarioMod == 0)
                 {
-                    MessageBox.Show("Ingresar un Id de usuario valido");
+                    throw new Exception("Ingresar un Id de usuario valido");
                 }
                 else
                 {
@@ -56,7 +60,7 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
                         actualizacionUsuario.Telefono = textBox1Telefono.Text;
 
                 }
-                bool exito = usuario.ModificarUsuario(idUsuarioMod, actualizacionUsuario);
+                bool exito = _usuario.ModificarUsuario(idUsuarioMod, actualizacionUsuario);
 
                 if (exito)
                 {
@@ -76,7 +80,7 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {   
-            FormularioInicio menuPricipalFormulario = new FormularioInicio();
+            FormularioInicio menuPricipalFormulario = new FormularioInicio(_usuario);
             menuPricipalFormulario.Show();
         }
     }

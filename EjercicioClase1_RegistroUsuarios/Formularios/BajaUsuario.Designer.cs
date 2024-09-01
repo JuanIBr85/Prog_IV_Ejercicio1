@@ -31,7 +31,6 @@
             numericUpDownBajaUsuarioId = new NumericUpDown();
             btnBajaUsuario = new Button();
             label1 = new Label();
-            checkBox1BajaUsuarioId = new CheckBox();
             dataGridViewBajaIdUsuario = new DataGridView();
             ID_Usuario = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
@@ -54,7 +53,7 @@
             // 
             // btnBajaUsuario
             // 
-            btnBajaUsuario.Location = new Point(407, 261);
+            btnBajaUsuario.Location = new Point(402, 251);
             btnBajaUsuario.Name = "btnBajaUsuario";
             btnBajaUsuario.Size = new Size(181, 45);
             btnBajaUsuario.TabIndex = 2;
@@ -71,22 +70,11 @@
             label1.TabIndex = 3;
             label1.Text = "Id Usuario";
             // 
-            // checkBox1BajaUsuarioId
-            // 
-            checkBox1BajaUsuarioId.AutoSize = true;
-            checkBox1BajaUsuarioId.ForeColor = Color.Red;
-            checkBox1BajaUsuarioId.Location = new Point(30, 88);
-            checkBox1BajaUsuarioId.Name = "checkBox1BajaUsuarioId";
-            checkBox1BajaUsuarioId.Size = new Size(130, 24);
-            checkBox1BajaUsuarioId.TabIndex = 4;
-            checkBox1BajaUsuarioId.Text = "Confirmar baja";
-            checkBox1BajaUsuarioId.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewBajaIdUsuario
             // 
             dataGridViewBajaIdUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBajaIdUsuario.Columns.AddRange(new DataGridViewColumn[] { ID_Usuario, Nombre, Apellido, Edad, FechaNacimiento, Email, Telefono });
-            dataGridViewBajaIdUsuario.Location = new Point(30, 135);
+            dataGridViewBajaIdUsuario.Location = new Point(30, 106);
             dataGridViewBajaIdUsuario.Name = "dataGridViewBajaIdUsuario";
             dataGridViewBajaIdUsuario.RowHeadersWidth = 51;
             dataGridViewBajaIdUsuario.Size = new Size(988, 120);
@@ -174,7 +162,6 @@
             ClientSize = new Size(1030, 333);
             Controls.Add(btnBuscarIdUsuario);
             Controls.Add(dataGridViewBajaIdUsuario);
-            Controls.Add(checkBox1BajaUsuarioId);
             Controls.Add(label1);
             Controls.Add(btnBajaUsuario);
             Controls.Add(numericUpDownBajaUsuarioId);
@@ -191,7 +178,6 @@
         private NumericUpDown numericUpDownBajaUsuarioId;
         private Button btnBajaUsuario;
         private Label label1;
-        private CheckBox checkBox1BajaUsuarioId;
         private DataGridView dataGridViewBajaIdUsuario;
         private Button btnBuscarIdUsuario;
         private DataGridViewTextBoxColumn ID_Usuario;

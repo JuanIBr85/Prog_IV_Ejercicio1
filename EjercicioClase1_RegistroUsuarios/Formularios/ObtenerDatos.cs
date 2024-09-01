@@ -1,4 +1,5 @@
-﻿using EjercicioClase1_RegistroUsuarios.Modelos;
+﻿using EjercicioClase1_RegistroUsuarios.Interfaces;
+using EjercicioClase1_RegistroUsuarios.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,8 +14,10 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
 {
     public partial class ObtenerDatos : Form
     {
-        public ObtenerDatos()
-        {
+        private readonly IUsuario _usuario;
+        public ObtenerDatos(IUsuario usuario)
+        {   
+            _usuario = usuario;
             InitializeComponent();
         }
 
@@ -31,7 +34,7 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
             if (numericUpDown1IdUsuario.Value == 0)
             {
                 List<Usuario> usuarios = new List<Usuario>();
-                usuarios = usuario.ObtenerUsuarios();
+                usuarios = _usuario.ObtenerUsuarios();
 
                 foreach (var usuario in usuarios)
                 {
@@ -44,12 +47,11 @@ namespace EjercicioClase1_RegistroUsuarios.Formularios
                 int usuarioPorId = Convert.ToInt32(numericUpDown1IdUsuario.Value);
 
                 Usuario usuarioID = new Usuario();
-                usuarioID = usuarioID.ObtenerUsuario(usuarioPorId);
+                usuarioID = _usuario.ObtenerUsuario(usuarioPorId);
 
                 dataGridViewUsuarios.Rows.Add(usuarioID.ID_Usuario, usuarioID.Nombre, usuarioID.Apellido, usuarioID.Edad, usuarioID.FechaNacimiento,
                     usuarioID.EmailUsuario, usuarioID.Telefono);
-            }
-                
+            } 
         }
     }
 } 
